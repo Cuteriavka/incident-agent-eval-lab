@@ -1,13 +1,13 @@
 # Incident Agent Evaluation Lab
 
-一个以公开数据和确定性回放为基础，用于评估云原生事故诊断 Agent 的结论、证据和工具使用过程的个人 clean-room 项目。
+一个以公开数据和确定性回放为基础，同时构建最小参考诊断 Agent 与独立评测器的个人 clean-room 项目。
 
 > **Status:** Planning — no evaluation results yet.
 
 ## 项目做什么
 
 - 将公开事故数据归一化为可重复执行的 replay case。
-- 让单个 Agent 在有限预算内提出候选假设，并调用已注册的只读探针获取 metrics、logs、traces、events、topology 或测试结果。
+- 实现一个最小参考诊断 Agent：在有限预算内提出候选假设，并调用已注册的只读探针获取 metrics、logs、traces、events、topology 或测试结果。
 - 输出带证据引用的结构化诊断；证据不足时返回 `insufficient_evidence`。
 - 分别评估根因结论、证据质量、探针有效性、安全策略、延迟和成本。
 - 将公开 Runbook RAG 作为可独立评测的知识子系统。
