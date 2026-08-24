@@ -28,14 +28,14 @@
 - 尚未下载或包含任何第三方数据。
 - 尚无基线、实验结果或性能提升数据。
 
-完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)。
+完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)。
 
 ## 计划使用的公开数据
 
 - [RCAEval](https://github.com/phamquiluan/RCAEval)：核心开发与留一系统验证候选。
 - RCA100 / AIOps2025：外部交叉验证候选，正式接入前将单独核验来源、版本和许可证。
 
-原始数据不会随本仓库重新分发。后续仅提供可审计的下载说明、校验和、数据卡与适配器。
+原始及派生第三方 payload 默认都不会随本仓库重新分发，除非对应 data card 明确证明再分发权限。后续仅提供可审计的下载说明、校验和、数据卡与适配器；原创 clean-room fixture 可在记录 provenance 后提交。
 
 ## 许可证
 

@@ -1,8 +1,8 @@
 # Learning State
 
-- 日期：2026-08-23
+- 日期：2026-08-25
 - 阶段：Day 1 — 项目定义与边界
-- 当前状态：Day 1 文档已核验，Ownership Check 已完成
+- 当前状态：Provisional — Day 1 文档已完成，Ownership 口述复验待完成
 
 ## 已完成
 
@@ -20,9 +20,11 @@
 - 没有下载或提交任何数据。
 - 没有产生或声称任何性能指标。
 
-## 当前阻塞项
+## 当前学习门槛
 
-无工程或学习验收阻塞。
+- 后续交互表明，`replay-first`、`SystemKnowledgePack` 和 v0.1 最小成功标准仍需要带具体案例的讲解与口述复验。
+- 这不是已实现代码的缺陷，但属于硬学习门禁；复验前禁止进入 Day 2A 或 Schema 实现。
+- 原 Day 2 Schema 任务作废，不允许直接进入 Schema 实现。
 
 ## AI 使用记录
 
@@ -34,15 +36,15 @@
 - 保留的 AI 建议：RAG 继续作为 Runbook 检索子系统。理由是项目核心是 Agent 的假设—探针—证据闭环及其评测，而不是再做一个通用知识库问答平台。
 - 保留的 AI 建议：首版只开放注册过的只读工具。理由是先证明诊断和评测可靠性，避免任意 shell、kubectl 或自动修复扩大安全风险。
 
-## Ownership Check
+## Ownership Check（待复验）
 
-- [x] 能解释为什么选择 replay-first：可重复、低成本、安全，并支持 Ground Truth 隔离和回归测试。
-- [x] 能解释为什么 RAG 是子系统而不是项目本体：RAG 只提供公开 Runbook，核心价值是 Agent 调查闭环和独立评测。
-- [x] 能解释 SystemKnowledgePack 如何承载不同系统和组件知识：它封装实体、拓扑、别名、公开 Runbook、数据适配器和允许探针，不存放某个 case 的答案。
-- [x] 能解释为什么首版禁止任意 shell/kubectl：防止越权和不可控副作用，让行为可审计、可回放。
-- [x] 能说明 v0.1 的最小成功标准：至少一个公开 case 能经过 adapter、replay、最小参考 Agent、结构化报告和独立评测，并通过契约、泄漏、引用和工具策略门禁。
-- [x] 能指出一条需要修改或保留的 AI 建议及理由：已修改 Agent 定位和术语说明，保留 replay-first、RAG 子系统与只读工具边界，理由见上。
+- [ ] 能结合一个具体 case 解释为什么选择 replay-first。
+- [ ] 能解释为什么 RAG 是子系统而不是项目本体。
+- [ ] 能用自己的话说明 `SystemKnowledgePack` 的输入、输出和边界。
+- [ ] 能解释为什么首版禁止任意 shell/kubectl。
+- [ ] 能从 `IncidentCase` 到评测报告口述 v0.1 最小纵向切片。
+- [ ] 能指出一条修改或保留的 AI 建议及理由。
 
 ## 下一项唯一动作
 
-Day 2：只定义 `IncidentCase@1` 和 `DiagnosisReport@1` 的最小契约与示例，不实现 Agent、不接入数据。
+进行一次约 10 分钟、带具体案例和 AI 讲解的 Day 1 Ownership 口述复验。通过后进入 Day 2A：只理解数据契约、provenance 和 Ground Truth 隔离，产出字段/规则表及合法、泄漏非法两个普通 JSON；不写 JSON Schema、不实现 Agent、不接入数据。
