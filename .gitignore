@@ -23,6 +23,9 @@ secrets/
 # Downloaded datasets and generated evaluation artifacts
 data/raw/
 data/downloads/
+data/derived/
+data/processed/
+data/external/
 artifacts/
 reports/runs/
 results/
