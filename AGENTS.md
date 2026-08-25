@@ -13,12 +13,18 @@ More specific instructions closer to a file may override this document. Personal
 
 ## Product boundaries
 
-- Deliver both a minimal reference diagnosis Agent and an independent evaluator.
+- Treat the independent evaluator as the primary product and the bounded reference diagnosis Agent as its first controlled system under test. Both remain required for v0.1.
+- Keep the reference Agent core explicit: `ReferenceAgentDriver = ProjectController + Policy`. Its controller owns that Agent's internal state and termination. The outer runner always owns the Ground Truth firewall, tool gateway, global budget caps, canonical run events, and final validator; another conforming `AgentDriver` may own internal orchestration but may not bypass runner invariants.
 - Keep replay-first: deterministic evidence playback is the v0.1 environment; a live cluster is optional later validation.
 - Treat Runbook RAG as an independently evaluated subsystem, not as the whole product.
 - Use `SystemKnowledgePack` on first mention; do not assume `SystemPack` is a standard industry term.
 - v0.1 is read-only. Do not add arbitrary shell, kubectl, filesystem access, dynamic scripts, or automatic remediation.
 - Never expose Ground Truth to the Agent through fields, filenames, manifests, indexes, prompts, or tools.
+- Treat the project-authored `RunRecord` as the canonical source for observable run behavior, budgets, tool results, failures, and version metadata. Case/replay snapshots and evaluator-only Ground Truth/EvaluationRecord remain separate canonical sources. Framework traces are derived views only.
+- Generalize only the three provisional v0.1 seams `AgentDriver`, `RunRecord`, and `BenchmarkSpec`. Their cross-task reuse is unverified. Keep incident cases, reports, probes, evidence, truth loading, and root-cause metrics domain-specific.
+- LangGraph may be added later as an optional thin adapter after the custom vertical slice passes. It is not a v0.1 release gate and must use the same tool gateway, budgets, artifacts, and evaluator.
+- `RunRecord` must never contain Ground Truth or evaluator details beyond an opaque report reference. Trace exporters may consume only an explicit pre-evaluation allowlist projection, with negative tests for Ground Truth canaries, credentials, and restricted payloads.
+- Do not market v0.1 as a universal Agent evaluation platform. A future competition-Agent integration is a post-v0.1 portability experiment, not a current deliverable.
 - Do not claim production readiness, accuracy improvements, or dataset compatibility before reproducible evidence exists.
 
 ## Clean-room and third-party content
