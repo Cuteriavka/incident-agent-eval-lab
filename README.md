@@ -1,6 +1,6 @@
 # Incident Agent Evaluation Lab
 
-一个以公开数据和确定性回放为基础，同时构建最小参考诊断 Agent 与独立评测器的个人 clean-room 项目。
+一个以独立评测器为主产品、以受限参考诊断 Agent 为首个被测对象，并以公开数据和确定性回放为基础的个人 clean-room 项目。
 
 > **Status:** Planning — no evaluation results yet.
 
@@ -9,7 +9,8 @@
 - 将公开事故数据归一化为可重复执行的 replay case。
 - 实现一个最小参考诊断 Agent：在有限预算内提出候选假设，并调用已注册的只读探针获取 metrics、logs、traces、events、topology 或测试结果。
 - 输出带证据引用的结构化诊断；证据不足时返回 `insufficient_evidence`。
-- 分别评估根因结论、证据质量、探针有效性、安全策略、延迟和成本。
+- 用硬门禁与多维 scorecard 分别评估根因、拒答、证据、探针、安全、完成率、延迟和成本。
+- 通过无探针、受限探针和 RAG 开关的受控变体，以及小规模重复运行，区分设计变化与 LLM 方差。
 - 将公开 Runbook RAG 作为可独立评测的知识子系统。
 
 ## 项目不做什么
@@ -17,6 +18,7 @@
 - 不自动执行修复。
 - 不开放任意 shell、kubectl、文件访问或动态脚本。
 - 不建设复杂 Web UI、通用运维平台或多 Agent 编排平台。
+- 不重建通用 trace、数据集、标注或实验管理平台，也不宣称当前支持任意 Agent。
 - 不使用或复刻任何公司的代码、日志、规则、提示、架构、内部命名或客户信息。
 - 不宣称已经适用于真实生产环境，也不发布未经实验验证的性能指标。
 
@@ -28,7 +30,7 @@
 - 尚未下载或包含任何第三方数据。
 - 尚无基线、实验结果或性能提升数据。
 
-完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)。
+完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)，主产品与参考 Agent 的边界见 [ADR-0001](docs/adr/0001-evaluator-first-reference-agent.md)。
 
 ## 计划使用的公开数据
 
