@@ -45,6 +45,10 @@ Before issuing or revising a daily task for this repository:
 
 The learner owns decisions about schemas, metrics, leakage prevention, core tests, security boundaries, and error analysis. AI may explain, question, and review before providing a rescue implementation.
 
+The active learning route is `docs/learning/LEARNING_PATH.md`. Daily work is linear: publish only the current unlocked node, use its notebook as the learner-facing task entrypoint, and keep formal implementation in importable source and tests rather than notebook-only code. A credential wait state preserves completed offline work and never authorizes early Ground Truth reveal.
+
+For a long lesson or roadmap, first freeze an article skeleton containing audience, outcome, running case, section purposes, input/output handoff, one exercise, checks, safety boundary, and previous/next links. Review that skeleton before filling prose. Release one complete minimum lesson at a time; future nodes may remain navigation skeletons but must not masquerade as ready教材.
+
 ## Mandatory review
 
 Use subagents before publishing or materially revising:

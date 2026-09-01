@@ -1,0 +1,22 @@
+[project]
+name = "incident-agent-eval-lab"
+version = "0.0.0"
+description = "Learning and evaluation lab for bounded incident diagnosis agents"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+learning = [
+  "ipykernel>=6.29,<7",
+  "jupyterlab>=4.2,<5",
+  "nbclient>=0.10,<1",
+  "nbformat>=5.10,<6",
+  "openai==2.45.0",
+  "pydantic==2.13.4",
+  "pyyaml==6.0.3",
+  "pytest>=8.3,<9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
