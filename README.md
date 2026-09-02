@@ -24,18 +24,18 @@
 
 ## 当前阶段
 
-仓库目前处于定向学习与最小切片准备阶段：
+仓库目前处于真实案例定向与最小切片准备阶段：
 
 - 尚无 Agent 或评测实现。
-- 已提供 Cloud-OpsBench 单案例的教学 notebook、安全准备脚本和测试；第三方数据只保存在仓库外。
-- 尚未完成真实模型 Agent 运行，也未揭示教学 case 的 Ground Truth。
+- 已提供 Cloud-OpsBench 单案例的实践 notebook、安全准备脚本和测试；第三方数据只保存在仓库外。
+- 尚未完成真实模型 Agent 运行，也未揭示引导 case 的 Ground Truth。
 - 尚无基线、实验结果或性能提升数据。
 
-当前学习入口见 [Linear Learning Path](docs/learning/LEARNING_PATH.md) 和 [N00 notebook](notebooks/00_cloudopsbench_orientation.ipynb)。完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)，主产品与参考 Agent 的边界见 [ADR-0001](docs/adr/0001-evaluator-first-reference-agent.md)。
+当前推进入口见 [线性项目推进路径](docs/learning/LEARNING_PATH.md) 和 [N00 notebook](notebooks/00_cloudopsbench_orientation.ipynb)。完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)，主产品与参考 Agent 的边界见 [ADR-0001](docs/adr/0001-evaluator-first-reference-agent.md)。
 
 ### 当前唯一启动入口（Windows）
 
-环境与仓库外教学数据准备完成后，在仓库根目录只运行：
+环境与仓库外案例数据准备完成后，在仓库根目录只运行：
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\start_n00.py

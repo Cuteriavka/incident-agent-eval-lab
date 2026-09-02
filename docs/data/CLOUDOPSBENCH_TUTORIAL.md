@@ -4,7 +4,7 @@
 
 ## 1. Purpose and non-claim
 
-This record supports one staged learning exercise over an upstream case. It does not approve Cloud-OpsBench as the v0.1 core dataset, prove adapter compatibility, or authorize publishing benchmark results. The selected case is permanently `tutorial/dev-only` after reveal.
+This record supports one staged project-orientation exercise over an upstream case. It does not approve Cloud-OpsBench as the v0.1 core dataset, prove adapter compatibility, or authorize publishing benchmark results. The selected case is permanently `tutorial/dev-only` after reveal.
 
 ## 2. Source, revision, archive checksum, and license
 
@@ -57,7 +57,7 @@ compare_only/
   milestone.json     # upstream process annotations
 ```
 
-The external learner workbook uses `pre_reveal/` for N00A. N00B imports only the `runner_code_view` extracted from the verified archive and gives it only `agent_run_view/`, which excludes Ground Truth metadata, process labels, and golden trajectories. The runner tree hash is rechecked before the credential is passed to it, and a project-owned exact-call guard rejects non-frozen tool requests before upstream execution. Ground Truth and process labels load only after a valid human report, a wrapper-validated Agent projection, their hashes, and the run validation marker all match. These are directory and workflow gates under one user's permissions—not a strong authorization boundary. Golden trajectories remain outside all required views.
+The external working notebook uses `pre_reveal/` for N00A. N00B imports only the `runner_code_view` extracted from the verified archive and gives it only `agent_run_view/`, which excludes Ground Truth metadata, process labels, and golden trajectories. The runner tree hash is rechecked before the credential is passed to it, and a project-owned exact-call guard rejects non-frozen tool requests before upstream execution. Ground Truth and process labels load only after a valid human report, a wrapper-validated Agent projection, their hashes, and the run validation marker all match. These are directory and workflow gates under one user's permissions—not a strong authorization boundary. Golden trajectories remain outside all required views.
 
 Leakage tests use injected, unique canaries in evaluator-only annotation fields. They do not ban every scalar value that also occurs in Ground Truth: a true faulty resource name can legitimately appear in Agent-visible observations and must remain available as evidence. The boundary excludes the answer annotation channel, not the observable system facts needed to infer an answer.
 

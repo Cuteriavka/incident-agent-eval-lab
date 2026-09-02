@@ -1,46 +1,46 @@
-# Linear Learning Path
+# 线性项目推进路径
 
-> Status: Active learning route
-> Rule: unlock one node at a time; the notebook is the daily task entrypoint
+> 状态：当前执行路径
+> 规则：一次只推进一个节点；Notebook 是当前节点的工作台
 
-## Why this route exists
+## 为什么需要这条路径
 
-The project must begin with an observable diagnosis experience, then turn that experience into contracts, safety boundaries, replay behavior, and evaluator requirements. A completed tutorial run is learning evidence only; it is not evidence that this repository has implemented or outperformed a diagnosis Agent.
+项目先从一次可观察的诊断过程开始，再把实际暴露的问题逐步转化为数据契约、安全边界、回放行为和评测器需求。完成引导案例只能证明实践流程已经执行，不能证明本仓库已经实现了诊断 Agent，也不能证明它优于其他方案。
 
-## The first continuous segment
+## 第一段连续路径
 
 ```text
-N00 Observe one real replay case
-  -> N01 Analyze the trajectory and evaluation gaps
-  -> N02 Define contracts and Ground Truth isolation
-  -> N03 Build a clean-room replay/evaluator slice
+N00 观察一个真实回放案例
+  -> N01 分析调查轨迹与评测缺口
+  -> N02 定义数据契约与 Ground Truth 隔离
+  -> N03 构建 clean-room 回放/评测纵向切片
 ```
 
-| Node | Concrete question | Input | Observable artifact | Unlocks |
+| 节点 | 要回答的具体问题 | 输入 | 可观察产物 | 完成后解锁 |
 |---|---|---|---|---|
-| [N00](nodes/N00_CLOUDOPSBENCH_ORIENTATION.md) | What does an Agent actually see, query, miss, and report? | Cloud-OpsBench `trainticket/service/1` outside this repository | Frozen `orientation_report`, validated `trajectory_projection`, and post-reveal `orientation_comparison` | N01 |
-| [N01](nodes/N01_TRAJECTORY_GAPS.md) | Why can a correct final answer still be a poor investigation? | Human/tool trajectory and an upstream trajectory | Gap table linking observations to evaluator requirements | N02 |
-| [N02](nodes/N02_CONTRACTS_AND_TRUTH.md) | Which fields belong to the Agent, runner, report, and evaluator? | One tutorial case plus a clean-room analogue | Field/rule table, legal JSON, leakage-invalid JSON | N03 |
-| [N03](nodes/N03_CLEANROOM_SLICE.md) | Can the project reject a bad report without an LLM or third-party data? | Project-authored fixture | Deterministic replay/evaluator result and failing negative case | MS-1 continuation |
+| [N00](nodes/N00_CLOUDOPSBENCH_ORIENTATION.md) | Agent 实际能够看到什么、查询什么、遗漏什么，最后又报告什么？ | 仓库外的 Cloud-OpsBench `trainticket/service/1` | 冻结的 `orientation_report`、验证后的 `trajectory_projection`，以及揭示真值后的 `orientation_comparison` | N01 |
+| [N01](nodes/N01_TRAJECTORY_GAPS.md) | 为什么最终答案正确，调查过程仍可能不合格？ | 人工工具调用轨迹与一条上游 Agent 轨迹 | 将观察现象关联到评测器需求的缺口表 | N02 |
+| [N02](nodes/N02_CONTRACTS_AND_TRUTH.md) | 哪些字段分别属于 Agent、runner、诊断报告和 evaluator？ | 一个引导案例及其 clean-room 类比样例 | 字段/规则表、一份合法 JSON 和一份因泄漏而非法的 JSON | N03 |
+| [N03](nodes/N03_CLEANROOM_SLICE.md) | 不依赖 LLM 或第三方数据，项目能否拒绝一份不合格报告？ | 项目原创 fixture | 确定性回放/评测结果和一个应当失败的负例 | 继续 MS-1 |
 
-## Two-stage use of public data
+## 公开数据的两阶段使用方式
 
-1. **Orientation now**: inspect one upstream case and use its cached read-only tools. The case is permanently `tutorial/dev-only`; no metric or compatibility claim follows.
-2. **Formal smoke after the clean-room slice**: select a different, still-unrevealed case and adapt it through a reviewed data card, project-owned contracts, two separate visibility paths, the same runner, and the independent evaluator. The N00 tutorial case can never become held-out data. Batch benchmarking remains later work.
+1. **当前定向观察**：检查一个上游案例并使用它缓存的只读工具。该案例永久标记为 `tutorial/dev-only`，不会据此产生指标或兼容性声明。
+2. **clean-room 切片完成后的正式冒烟验证**：选择另一个仍未揭示答案的案例，通过已审查的数据卡、项目自有契约、两个隔离可见性路径、同一 runner 和独立 evaluator 完成适配。N00 引导案例永远不能转为 held-out 数据；批量 benchmark 属于后续工作。
 
-## Daily entry rule
+## 节点执行规则
 
-The daily message contains only the current node, one start command, and the checkpoint to finish. A tracked empty-output starter creates a repository-external working notebook containing the case, explanation, current exercise, self-check, and submission instructions. Later checkpoints are visibly locked and are not additional work for today.
+当前执行说明只给出一个节点、一条启动命令和一个完成检查点。仓库中受 Git 跟踪的是不能直接执行的空输出 starter；启动脚本会在仓库外创建工作 Notebook，其中包含案例说明、当前操作、自检和提交要求。后续检查点保持锁定，不会被当作本次额外工作。
 
-## Content build rule
+## 节点文档构建规则
 
-Long lessons are produced in two passes:
+较长的节点文档分两步完成：
 
-1. Freeze a skeleton: audience, learning outcome, prerequisite, running case, section purpose, input/output handoff, evidence, one exercise, expected behavior, no more than three checks, safety boundary, and previous/next links.
-2. Review the skeleton for continuity, then fill the current node as one complete minimum vertical lesson. Run and review the whole node before release; do not publish partially filled sections. A future node remains a skeleton until it is close to being unlocked.
+1. 先冻结骨架：目标读者、预期结果、前置条件、贯穿案例、各节目的、输入/输出交接、证据、一个操作、预期行为、不超过三项检查、安全边界和前后节点链接。
+2. 审查骨架的连续性，再把当前节点补成一个完整的最小纵向单元。发布前运行并复核整个节点，不发布只有部分内容的章节。未来节点在即将解锁前只保留导航骨架。
 
-### Definition of Ready for a node
+### 节点就绪条件
 
-- The running case, input/output handoff, one exercise, expected behavior, three checks, and safety boundary are non-empty.
-- The required path can run in a clean notebook kernel without a hidden execution order. Any external credential gate is explicit.
-- Only the current node may become a daily task. Passing it unlocks the next node; future skeletons are navigation, not assignments.
+- 贯穿案例、输入/输出交接、唯一操作、预期行为、三项检查和安全边界均已明确。
+- 必需路径可以在干净的 Notebook kernel 中运行，不依赖隐藏执行顺序；如需外部凭据，门禁必须显式可见。
+- 只有当前节点可以进入执行状态。通过后才解锁下一节点；未来骨架只用于导航，不是当前待办。

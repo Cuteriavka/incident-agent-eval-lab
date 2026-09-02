@@ -173,8 +173,8 @@ evaluator 只从 runner-owned 字段和冻结 report 读取运行事实，再从
 
 ### MS-0 — Foundation（目标窗口：第 1 周附近）
 
-- **Outcome**：项目问题、边界、合规和学习门禁清楚；作者先对一个真实 replay case 建立直观认识。
-- **Learning orientation**：按 [N00](learning/nodes/N00_CLOUDOPSBENCH_ORIENTATION.md) 完成固定 Cloud-OpsBench 教学 case。先冻结人工调查，再运行一次真实上游 ReAct 轨迹并冻结其 allowlist 投影，最后才揭示真值进行比较。这个 case 永久为 `tutorial/dev-only`，不进入指标或 held-out split。
+- **Outcome**：项目问题、边界、合规和推进门禁清楚；作者先对一个真实 replay case 建立直观认识。
+- **Case orientation**：按 [N00](learning/nodes/N00_CLOUDOPSBENCH_ORIENTATION.md) 完成固定 Cloud-OpsBench 引导 case。先冻结人工调查，再运行一次真实上游 ReAct 轨迹并冻结其 allowlist 投影，最后才揭示真值进行比较。这个 case 永久为 `tutorial/dev-only`，不进入指标或 held-out split。
 - **Exit gate**：N00 完成后，作者无提示说明 evaluator 是主产品、Reference Agent 是首个受控 SUT、为何二者都要交付，并用刚观察的 case 解释 replay-first、Ground Truth 隔离、RAG 子系统、`SystemKnowledgePack`、只读工具边界和一个替代方案代价。
 - **Deferred**：项目自己的 Schema、replay/Agent/evaluator 实现，以及公开数据性能评测。
 - **状态**：In progress。当前执行 N00A；尚未运行真实模型，也未揭示 Ground Truth。
@@ -234,8 +234,8 @@ evaluator 只从 runner-owned 字段和冻结 report 读取运行事实，再从
 ## 9. 当前门槛
 
 - 当前里程碑：MS-0 — In progress。
-- 当前学习节点：N00A — 对固定 Cloud-OpsBench case 完成人工只读调查并冻结报告。
-- 当前唯一动作：打开 [`00_cloudopsbench_orientation.ipynb`](../notebooks/00_cloudopsbench_orientation.ipynb)，运行到 N00A 冻结检查；不揭示 Ground Truth。
+- 当前实践节点：N00A — 对固定 Cloud-OpsBench case 完成人工只读调查并冻结报告。
+- 当前唯一动作：在仓库根目录运行 `.\.venv\Scripts\python.exe scripts\start_n00.py`，在打开的仓库外工作副本中运行到 N00A 冻结检查；不揭示 Ground Truth。仓库内的 [`00_cloudopsbench_orientation.ipynb`](../notebooks/00_cloudopsbench_orientation.ipynb) 只用于查看 starter，不是执行入口。
 - 后续顺序：等待模型凭据 → N00B 真实 ReAct 运行 → N00C 冻结后比较 → N01 轨迹评测缺口。不得直接跳到 Schema。
 
 每日状态见 [`STATE.md`](../STATE.md)，问题定义见 [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md)，第三方边界见 [`NOTICE.md`](../NOTICE.md)。

@@ -1,4 +1,4 @@
-# Learning State
+# 项目状态
 
 - 日期：2026-09-02
 - 项目阶段：MS-0 — Foundation
@@ -8,14 +8,14 @@
 ## 已完成
 
 - 确认独立 evaluator 是主产品，受限 Reference Agent 是首个受控被测对象，两者都属于 v0.1。
-- 将学习路线改为线性节点：N00 真实案例观察 → N01 轨迹/评测缺口 → N02 契约与 Ground Truth 隔离 → N03 clean-room replay/evaluator 切片。
-- 建立 `uv + Python 3.12` 学习环境、固定版本数据记录、教学准备脚本、空输出 starter notebook 和仓库外工作簿启动器。
+- 将推进路径整理为线性节点：N00 真实案例观察 → N01 轨迹/评测缺口 → N02 契约与 Ground Truth 隔离 → N03 clean-room replay/evaluator 切片。
+- 建立 `uv + Python 3.12` 本地实践环境、固定版本数据记录、案例准备脚本、空输出 starter notebook 和仓库外工作簿启动器。
 - 在仓库外准备 Cloud-OpsBench 固定版本与 `trainticket/service/1` 的 pre-reveal/compare-only 双视图。
 - 为报告引用、冻结顺序、轨迹投影和 notebook 公开策略建立自动化测试。
 
 ## 尚未完成
 
-- 学习者尚未填写并冻结 N00A 的人工 `orientation_report`。
+- 项目作者尚未填写并冻结 N00A 的人工 `orientation_report`。
 - 尚未提供模型 API Key，因此没有运行 N00B 的真实上游 ReAct Agent。
 - 尚未揭示教学 case 的 Ground Truth，也没有进行 N00C 比较。
 - 没有实现本项目的 Reference Agent、replay、契约或 evaluator。
@@ -26,7 +26,7 @@
 - 第三方 checkout、缓存、原始/派生 payload、原始 Agent 轨迹和实际 notebook 输出均留在仓库外。
 - 公开仓库当前只允许不能直接执行的空输出 starter、项目原创说明和测试代码。N00 生成的报告、投影、比较、hash 与 marker 在独立导出门禁实现前全部保持仓库外私有。
 - N00 人工诊断和 Agent 轨迹投影都冻结前，compare-only loader 不得揭示 Ground Truth。
-- N00 教学 case 在揭示后永久为 `tutorial/dev-only`，不得进入 prompt、RAG、正式 fixture、held-out split 或指标。
+- N00 引导 case 在揭示后永久为 `tutorial/dev-only`，不得进入 prompt、RAG、正式 fixture、held-out split 或指标。
 
 ## 当前阻塞与状态转换
 
@@ -38,7 +38,7 @@ N00A -> N00-WAITING-KEY -> N00B -> N00C -> N01
 
 ## AI 与作者所有权
 
-- AI 已完成：课程骨架、教学包装器、测试和 notebook 起始模板；这些属于待作者核验的辅助实现。
+- AI 已完成：节点骨架、案例包装器、测试和 notebook 起始模板；这些属于待作者核验的辅助实现。
 - 项目作者必须完成：亲自选择探针、概括观察、冻结人工诊断、解释一个高价值与低价值查询，并在 N00C 形成自己的比较结论。
 - 只有通过节点 Ownership Check，相关能力才能从 `Implemented` 升级为 `Defendable`。
 
