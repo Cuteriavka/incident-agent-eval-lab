@@ -4,7 +4,7 @@
 >
 > 版本：0.2
 >
-> 最近审查：2026-08-25
+> 最近审查：2026-09-01
 
 本路线图提前说明项目要解决的问题、真实场景、需求、技术手段和验收证据。十二周是目标窗口，不是按日期锁死的课程表；只有通过当前退出门槛才进入下一里程碑。窗口落后时缩小可选范围，不跳过门禁，也不形成“补课债”。
 
@@ -173,17 +173,18 @@ evaluator 只从 runner-owned 字段和冻结 report 读取运行事实，再从
 
 ### MS-0 — Foundation（目标窗口：第 1 周附近）
 
-- **Outcome**：项目问题、边界、合规和学习门禁清楚。
-- **Exit gate**：约 10 分钟复验中，AI 先用具体 case 讲解 5～7 分钟；作者随后无提示口述约 2 分钟，必须说明 evaluator 是主产品、Reference Agent 是首个受控 SUT、为何二者都要交付，并正确画出 Agent/evaluator/GT 数据流，解释 replay-first、RAG 子系统、`SystemKnowledgePack`、只读工具边界和一个替代方案代价；剩余时间用于边界追问和记录。
-- **Deferred**：Schema、数据和 Agent 代码。
-- **状态**：In progress。文档已完成，口述 Ownership 仍需复验。
+- **Outcome**：项目问题、边界、合规和推进门禁清楚；作者先对一个真实 replay case 建立直观认识。
+- **Case orientation**：按 [N00](learning/nodes/N00_CLOUDOPSBENCH_ORIENTATION.md) 完成固定 Cloud-OpsBench 引导 case。先冻结人工调查，再运行一次真实上游 ReAct 轨迹并冻结其 allowlist 投影，最后才揭示真值进行比较。这个 case 永久为 `tutorial/dev-only`，不进入指标或 held-out split。
+- **Exit gate**：N00 完成后，作者无提示说明 evaluator 是主产品、Reference Agent 是首个受控 SUT、为何二者都要交付，并用刚观察的 case 解释 replay-first、Ground Truth 隔离、RAG 子系统、`SystemKnowledgePack`、只读工具边界和一个替代方案代价。
+- **Deferred**：项目自己的 Schema、replay/Agent/evaluator 实现，以及公开数据性能评测。
+- **状态**：In progress。当前执行 N00A；尚未运行真实模型，也未揭示 Ground Truth。
 
 ### MS-1 — Contracted replay slice（第 1～3 周目标窗口）
 
 - **Outcome**：不依赖 LLM 的最小 case → replay → report → validator 纵向切片。
-- **Requirements**：R-A1～R-A4、R-B2、R-E1。这里只使用原创 clean-room fixture；第三方 adapter 与许可门禁留到 MS-3。
-- **Exit gate**：一个手工 clean-room fixture 可由 `FixtureAgentDriver` 生成预设合法拒答并进入 validator/evaluator；Ground Truth 隔离测试通过，最小 `AgentDriver`/`RunRecord`/`BenchmarkSpec` 接缝有契约样例。MS-1 不实现 controller/Policy。
-- **Deferred**：公开数据批量接入和模型 Agent。
+- **Requirements**：R-A1～R-A4、R-B1～R-B3、R-E1。核心纵向切片先且只使用原创 clean-room fixture。
+- **Exit gate**：一个手工 clean-room fixture 可由 `FixtureAgentDriver` 生成预设合法拒答并进入 validator/evaluator；Ground Truth 隔离测试通过，最小 `AgentDriver`/`RunRecord`/`BenchmarkSpec` 接缝有契约样例。之后才能用一个不同于 N00、从未揭示过答案的公开 case 做 formal smoke；它必须先通过 data card、许可/provenance 和双视图 adapter 审查，并走同一 runner/evaluator。MS-1 不实现 controller/Policy，不报告 benchmark 性能。
+- **Deferred**：公开数据批量接入、模型 Agent 和数据集兼容性声明。
 
 ### MS-2 — Restricted reference Agent（第 3～6 周目标窗口）
 
@@ -215,7 +216,7 @@ evaluator 只从 runner-owned 字段和冻结 report 读取运行事实，再从
 
 ## 7. 阶段复审与决策点
 
-- **MS-1 末**：契约、真值隔离、恶意 driver 和指标小样本能否触发预期门禁/变化；不选择最终模型供应商。
+- **MS-1 末**：契约、真值隔离、恶意 driver 和指标小样本能否触发预期门禁/变化；再用一个未揭示公开 case 做 formal smoke，验证 adapter 接缝而非性能；不选择最终模型供应商。
 - **MS-2 入口**：完成 `PolicyDecision` 契约和三个 synthetic capability case 后，再依据结构化输出、工具调用、成本和可用性选择首个模型供应商并新增 ADR。
 - **MS-3 末**：决定是否接入外部数据集；仅在许可、映射、资源和时间门禁通过时选择一个冻结候选，无合格候选不阻塞 v0.1；同时判断 RAG 是否带来可测增益或新失败。
 - **MS-4/5**：只有核心门禁和报告不受影响时，才实现可选 LangGraph Adapter；否则推迟到 v0.2。
@@ -233,7 +234,8 @@ evaluator 只从 runner-owned 字段和冻结 report 读取运行事实，再从
 ## 9. 当前门槛
 
 - 当前里程碑：MS-0 — In progress。
-- 当前唯一动作：完成带讲解的 Day 1 Ownership 口述复验。
-- 复验通过后的动作：Day 2A 只理解数据契约、provenance 和 Ground Truth 隔离，产出字段/规则表及两个普通 JSON；不写 JSON Schema。
+- 当前实践节点：N00A — 对固定 Cloud-OpsBench case 完成人工只读调查并冻结报告。
+- 当前唯一动作：在仓库根目录运行 `.\.venv\Scripts\python.exe scripts\start_n00.py`，在打开的仓库外工作副本中运行到 N00A 冻结检查；不揭示 Ground Truth。仓库内的 [`00_cloudopsbench_orientation.ipynb`](../notebooks/00_cloudopsbench_orientation.ipynb) 只用于查看 starter，不是执行入口。
+- 后续顺序：等待模型凭据 → N00B 真实 ReAct 运行 → N00C 冻结后比较 → N01 轨迹评测缺口。不得直接跳到 Schema。
 
 每日状态见 [`STATE.md`](../STATE.md)，问题定义见 [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md)，第三方边界见 [`NOTICE.md`](../NOTICE.md)。

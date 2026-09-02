@@ -4,6 +4,7 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.ipynb_checkpoints/
 .coverage
 htmlcov/
 
@@ -14,6 +15,8 @@ env/
 
 # Local configuration and secrets
 .env
+.learning.local.json
+.n00b.local.json
 .env.*
 !.env.example
 *.pem
@@ -31,6 +34,7 @@ reports/runs/
 results/
 cache/
 *.log
+*.nbconvert.ipynb
 
 # Editors and operating systems
 .idea/

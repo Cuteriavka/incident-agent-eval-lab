@@ -24,17 +24,29 @@
 
 ## 当前阶段
 
-仓库目前只包含项目定义、合规边界和学习状态记录：
+仓库目前处于真实案例定向与最小切片准备阶段：
 
 - 尚无 Agent 或评测实现。
-- 尚未下载或包含任何第三方数据。
+- 已提供 Cloud-OpsBench 单案例的实践 notebook、安全准备脚本和测试；第三方数据只保存在仓库外。
+- 尚未完成真实模型 Agent 运行，也未揭示引导 case 的 Ground Truth。
 - 尚无基线、实验结果或性能提升数据。
 
-完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)，主产品与参考 Agent 的边界见 [ADR-0001](docs/adr/0001-evaluator-first-reference-agent.md)。
+当前推进入口见 [线性项目推进路径](docs/learning/LEARNING_PATH.md) 和 [N00 notebook](notebooks/00_cloudopsbench_orientation.ipynb)。完整问题定义见 [Project Brief](docs/PROJECT_BRIEF.md)，问题、场景、需求、技术手段和退出门槛见 [Project Roadmap](docs/PROJECT_ROADMAP.md)，主产品与参考 Agent 的边界见 [ADR-0001](docs/adr/0001-evaluator-first-reference-agent.md)。
+
+### 当前唯一启动入口（Windows）
+
+环境与仓库外案例数据准备完成后，在仓库根目录只运行：
+
+```powershell
+.\.venv\Scripts\python.exe scripts\start_n00.py
+```
+
+该命令把受 Git 跟踪的空输出 starter 复制到仓库外并打开工作副本。看到固定 `case_ref`、症状和 9 个工具族即表示 N00A 已就绪；不要直接运行仓库中的 starter。
 
 ## 计划使用的公开数据
 
-- [RCAEval](https://github.com/phamquiluan/RCAEval)：核心开发与留一系统验证候选。
+- [Cloud-OpsBench](https://github.com/LLM4Ops/Cloud-OpsBench)：当前只用于一个固定、永久 `tutorial/dev-only` 案例的定向观察；不产生兼容性或性能声明。
+- [RCAEval](https://github.com/phamquiluan/RCAEval)：传统 RCA 对照与后续核心数据候选，须在数据审计后再决定。
 - RCA100 / AIOps2025：外部交叉验证候选，正式接入前将单独核验来源、版本和许可证。
 
 原始及派生第三方 payload 默认都不会随本仓库重新分发，除非对应 data card 明确证明再分发权限。后续仅提供可审计的下载说明、校验和、数据卡与适配器；原创 clean-room fixture 可在记录 provenance 后提交。
